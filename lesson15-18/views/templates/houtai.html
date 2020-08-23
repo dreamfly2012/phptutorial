@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <header>
+        <a href="index.php?method=add" target="_blank">添加</a>
+    </header>
+
+    <table border="1">
+       <thead>
+           <th>id</th>
+           <th>标题</th>
+           <th>内容</th>
+       </thead>
+       <tbody>
+           {% for v in articles  %}
+           <tr>
+               <td>{{v.id}}</td>
+               <td>{{v.title}}</td>
+               <td>{{v.content}}</td>
+               <td><a href="index.php?method=edit&id={{v.id}}">编辑</a></td>
+               <td><a href="javascript:;" class="delete" data-id="{{v.id}}">删除</a></td>
+           </tr>
+           {% endfor %}
+       </tbody>
+    </table>
+    <script>
+
+        let url = 'index.php?method=delete'
+        let deletes = document.querySelectorAll('.delete')
+        for(let i=0; i< deletes.length; i++){
+            deletes[i].onclick = function(){
+            if(confirm('是否真的删除')){
+                
+                let id = this.dataset.id
+                
+                let formData = new FormData();
+                formData.append('id', id);
+               
+                fetch(url,{
+                    body:formData,
+                    method:'POST',
+                    
+                }).then(res=>res.json())
+                .then(data=>{
+                    if(data.code==0){
+                        alert('删除成功');
+                        window.location.href = 'index.php?method=houtai';
+                    }else{
+                        alert(data.msg)
+                    }
+                    console.log(data)
+                })
+            }
+        }}
+		
+    </script>
+</body>
+</html>

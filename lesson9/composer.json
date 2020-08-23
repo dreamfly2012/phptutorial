@@ -1,0 +1,13 @@
+{
+    "name": "administrator/lesson9",
+    "description": "a demo about composer",
+    "authors": [
+        {
+            "name": "dreamfly",
+            "email": "jia.fu2013@gmail.com"
+        }
+    ],
+    "require": {
+        "jaeger/querylist": "^4.2"
+    }
+}

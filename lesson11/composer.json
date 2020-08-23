@@ -1,0 +1,12 @@
+{
+    "name": "administrator/lesson11",
+    "authors": [
+        {
+            "name": "menghuiguli",
+            "email": "jia.fu2013@gmail.com"
+        }
+    ],
+    "require": {
+        "phpunit/phpunit": "^9.1"
+    }
+}
